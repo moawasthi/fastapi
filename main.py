@@ -2,7 +2,7 @@ from fastapi import Body, FastAPI
 app = FastAPI()
 @app.get("/")
 async def root():
-    return {"message": "Hello API!! Hello World!!"}
+    return {"message": "Hello World!!"}
 
 @app.get("/posts")
 async def  get_posts():
@@ -10,4 +10,5 @@ async def  get_posts():
 
 @app.post("/createposts")
 async def create_posts(payload: dict = Body(...)):
-    return {"new post" : f"title is {payload.title} {payload.content}" }
+    return {"new post" : f"title is {payload["title"]} {payload["content"]}" }
+
